@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+
+<html lang = "en">
+    <head>
+        <meta charset="UTF-8">
+        <!--<meta name="keywords" content="TicTacToe, tictactoe, Tic Tac Toe, tic tac toe, XO, X&O, X O, X and O">-->
+
+        <meta name="author" content="Amaan Kazi">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!--<meta http-equiv="X-UA-Compatible" content="IE=edge">-->
+        <title>Tic Tac Toe</title>
+        <meta name="description" content="Play Tic Tac Toe (X and O) with another player">
+
+        <link rel="stylesheet" href="stylesheets/play.css">
+        <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+
+        <!--Google Fonts-->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    </head>
+
+    <body>
+        <div id = "navbar">
+            <div id = "megaHeader">
+                <div id = "header">
+                    <p id = "title">Tic Tac Toe</p>
+                    <nav>
+                        <button class = "navButton">
+                            <a class = "navLink" href = "index.html">Home</a>
+                        </button>
+
+                        <button class = "navButton">
+                            <a class = "navLink" href = "index.html">How To Play</a>
+                        </button>
+
+                        <button class = "navButton">
+                            <a class = "navLink" href = "index.html">About</a>
+                        </button>
+                    </nav>
+                </div>
+                <hr>
+            </div>
+        </div>
+
+        <main>
+            <table cellspacing = 0 cellpadding = 5%>
+                <tr>
+                    <td id = "00" class = "hb vb" onclick="gridInput(0, 0)" onmouseover="gridMouseOver(0, 0)" onmouseout="gridMouseOut(0, 0)">&nbsp;</td>
+                    <td id = "01" class = "hb vb" onclick="gridInput(0, 1)" onmouseover="gridMouseOver(0, 1)" onmouseout="gridMouseOut(0, 1)">&nbsp;</td>
+                    <td id = "02" class = "hb" onclick="gridInput(0, 2)" onmouseover="gridMouseOver(0, 2)" onmouseout="gridMouseOut(0, 2)">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td id = "10" class = "hb vb" onclick="gridInput(1, 0)" onmouseover="gridMouseOver(1, 0)" onmouseout="gridMouseOut(1, 0)">&nbsp;</td>
+                    <td id = "11" class = "hb vb" onclick="gridInput(1, 1)" onmouseover="gridMouseOver(1, 1)" onmouseout="gridMouseOut(1, 1)">&nbsp;</td>
+                    <td id = "12" class = "hb" onclick="gridInput(1, 2)" onmouseover="gridMouseOver(1, 2)" onmouseout="gridMouseOut(1, 2)">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td id = "20" class = "vb" onclick="gridInput(2, 0)" onmouseover="gridMouseOver(2, 0)" onmouseout="gridMouseOut(2, 0)">&nbsp;</td>
+                    <td id = "21" class = "vb" onclick="gridInput(2, 1)" onmouseover="gridMouseOver(2, 1)" onmouseout="gridMouseOut(2, 1)">&nbsp;</td>
+                    <td id = "22" onclick="gridInput(2, 2)" onmouseover="gridMouseOver(2, 2)" onmouseout="gridMouseOut(2, 2)">&nbsp;</td>
+                </tr>
+            </table>
+        </main>
+        <script src="js/play.js"></script>
+    </body>
+</html>

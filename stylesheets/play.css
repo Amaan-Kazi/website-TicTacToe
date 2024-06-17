@@ -1,0 +1,123 @@
+:root {
+    /* Variables */
+    --text: #F2EAEA;
+    --background: #212121;
+    --primary: #25cedf;
+    --secondary: #f44336;
+    --backgroundSaturated: #1E1E1E;
+
+    --blue: #008CBA;
+    --red: #f44336;
+}
+
+html, body {
+    height: 100vh;
+    width: 100%;
+    margin: 0;
+
+    background-color: var(--background);
+    color: var(--text);
+    font-family: "Poppins", sans-serif;
+    user-select: none;
+}
+
+#navbar {
+    width: 100%;
+}
+
+#megaHeader {
+    height: 10vh;
+}
+#header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#title {
+    margin: 0;
+    margin-left: 1%;
+    font-size: 5vh;
+    font-weight: 600;
+    color: var(--primary);
+}
+
+nav {
+    display: flex;
+    width: 75%;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: 5%;
+    margin-right: 1%;
+}
+
+hr {
+    margin-top: 0;
+    margin-bottom: 0;
+    border-color: white;
+    border-width: 1px;
+}
+
+button {
+    background: none;
+    border: none;
+    font: inherit;
+}
+
+.navButton::before {
+    margin-left: auto;
+}
+
+.navButton::after, .navButton::before {
+    content: '';
+    width: 0%;
+    height: 2px;
+    background: var(--secondary);
+    display: block;
+    transition: 0.5s;
+}
+
+.navButton:hover::after, button:hover::before {
+    width: 100%;
+}
+
+.navLink {
+    color: var(--text);
+    font-size: 3.5vh;
+    text-decoration: none;
+}
+
+.navLink:hover {
+    color: var(--blue);
+    transition: 0.5s;
+}
+
+main {
+    height: calc(90vh - 2px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+table {
+    height: 30vmax;
+    width: 30vmax;
+    text-align: center;
+    font-size: 6vmax;
+    table-layout: fixed;
+}
+
+td {
+    border-top: 2px solid var(--background);
+    border-bottom: 2px solid var(--background);
+    border-left: 2px solid var(--background);
+    border-right: 2px solid var(--background);
+}
+
+.hb {
+    border-bottom: 2px solid white;
+}
+.vb {
+    border-right: 2px solid white;
+}
