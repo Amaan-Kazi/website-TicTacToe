@@ -83,8 +83,8 @@ const subscribePubNub = () => {
 const setupPubNub = () => {
     // Update this block with your publish/subscribe keys
     pubnub = new PubNub({
-        publishKey: secrets.PUBNUB_PUBLISH_KEY, // Publish Key on pubnub admin panel
-        subscribeKey: secrets.PUBNUB_SUBSCRIBE_KEY, // Subscribe Key on pubnub admin panel
+        publishKey: "pub-c-1f4fb052-a488-4089-9b6a-f2ba042193f7", // Publish Key on pubnub admin panel
+        subscribeKey: "sub-c-7d29bc1b-a111-4ff0-99e0-4c64c593df5b", // Subscribe Key on pubnub admin panel
         userId: user_name // Unique user name for each user
     });
 };
