@@ -40,7 +40,7 @@ var user_name;
 const messageForm = document.getElementById("SendMessage");
 var msg;
 
-const socket = io("https://chess-amaankazi.onrender.com:3000")
+const socket = io("https://chess-amaankazi.onrender.com")
 
 socket.on('chat-message', data => {
     console.log(`${data.name}: ${data.message}`)
