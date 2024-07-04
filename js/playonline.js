@@ -41,8 +41,6 @@ function generateRandomString(length) {
     return result;
 }
 
-socket.emit("new-user", generateRandomString(3))
-console.log("You joined")
 
 socket.on('chat-message', data => {
     console.log(`${data.name}: ${data.message}`)
@@ -62,6 +60,15 @@ messageForm.addEventListener("submit", function (event) {
     
     socket.emit("send-chat-message", msg)
     messageForm.reset();
+});
+
+loginForm.addEventListener("submit", function (event) {
+    event.preventDefault(); // Prevent default reloading on form submit
+    user_name = loginForm.username.value;
+
+    
+    socket.emit("new-user", user_name)
+    console.log("You joined")
 });
 
 /*
@@ -163,23 +170,7 @@ function createChannel()
 }
 
 // FORMS
-loginForm.addEventListener("submit", function (event) {
-    event.preventDefault(); // Prevent default reloading on form submit
-    user_name = loginForm.username.value;
 
-    if ((user_name.length != 0) && (user_name.charAt(0) != " "))
-    {
-        loginForm.style.display = "none";
-        console.log("User Name: " + user_name);
-        
-        setupPubNub();
-        channelForm.style.display = "block";
-    }
-    else
-    {
-        console.log("The username is invalid");
-    }
-});
 
 async function validateChannel(id)
 {
