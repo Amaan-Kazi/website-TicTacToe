@@ -30,6 +30,7 @@ var channelId;
 var xUser;
 var isUserTurn;
 
+const socket = io("https://chess-amaankazi.onrender.com:3000")
 
 function generateRandomString(length) {
     const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
@@ -40,7 +41,30 @@ function generateRandomString(length) {
     return result;
 }
 
+socket.emit("new-user", generateRandomString(3))
+console.log("You joined")
 
+socket.on('chat-message', data => {
+    console.log(`${data.name}: ${data.message}`)
+})
+  
+socket.on('user-connected', name => {
+    console.log(`${name} connected`)
+})
+  
+socket.on('user-disconnected', name => {
+    console.log(`${name} disconnected`)
+})
+
+messageForm.addEventListener("submit", function (event) {
+    event.preventDefault();
+    msg = messageForm.message.value;
+    
+    socket.emit("send-chat-message", msg)
+    messageForm.reset();
+});
+
+/*
 const subscribePubNub = () => {
     // subscribe to a channel
     // create a local channel entity
@@ -79,6 +103,7 @@ const subscribePubNub = () => {
     console.log("Channel: " + channelId);
 }
 
+/*
 // PUBNUB
 const setupPubNub = () => {
     // Update this block with your publish/subscribe keys
@@ -209,13 +234,7 @@ channelForm.addEventListener("submit", function (event) {
     }
 });
 
-messageForm.addEventListener("submit", function (event) {
-    event.preventDefault();
-    msg = messageForm.message.value;
-    
-    publishData("chat", msg, null, null);
-    messageForm.reset();
-});
+
 
 
 // Initialize grid
