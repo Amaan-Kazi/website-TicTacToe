@@ -30,7 +30,7 @@ var channelId;
 var xUser;
 var isUserTurn;
 
-const socket = io("https://chess-amaankazi.onrender.com:3000")
+const socket = io("http://chess-amaankazi.onrender.com:3000")
 
 function generateRandomString(length) {
     const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
@@ -45,7 +45,7 @@ function generateRandomString(length) {
 socket.on('chat-message', data => {
     console.log(`${data.name}: ${data.message}`)
 })
-  
+
 socket.on('user-connected', name => {
     console.log(`${name} connected`)
 })
@@ -65,7 +65,6 @@ messageForm.addEventListener("submit", function (event) {
 loginForm.addEventListener("submit", function (event) {
     event.preventDefault(); // Prevent default reloading on form submit
     user_name = loginForm.username.value;
-
     
     socket.emit("new-user", user_name)
     console.log("You joined")
