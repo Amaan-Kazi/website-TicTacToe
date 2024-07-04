@@ -16,12 +16,6 @@ var draws = 0;
 
 const ticTacToeTable = document.getElementById("TicTacToeTable");
 
-const loginForm = document.getElementById("Login");
-var user_name;
-
-const messageForm = document.getElementById("SendMessage");
-var msg;
-
 const channelForm = document.getElementById("ChannelForm");
 
 var pubnub;
@@ -39,6 +33,12 @@ function generateRandomString(length) {
     return result;
 }
 */
+
+const loginForm = document.getElementById("Login");
+var user_name;
+
+const messageForm = document.getElementById("SendMessage");
+var msg;
 
 const socket = io("https://chess-amaankazi.onrender.com:3000")
 
