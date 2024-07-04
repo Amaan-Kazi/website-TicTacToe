@@ -1,4 +1,4 @@
-var turns = 0;
+/*var turns = 0;
 var winner = 0; // 0 = No One, 1 = X, 2 = O
 var isGameOver = false;
 
@@ -30,8 +30,6 @@ var channelId;
 var xUser;
 var isUserTurn;
 
-const socket = io("http://chess-amaankazi.onrender.com:3000")
-
 function generateRandomString(length) {
     const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
     let result = "";
@@ -40,7 +38,9 @@ function generateRandomString(length) {
     }
     return result;
 }
+*/
 
+const socket = io("https://chess-amaankazi.onrender.com:3000")
 
 socket.on('chat-message', data => {
     console.log(`${data.name}: ${data.message}`)
