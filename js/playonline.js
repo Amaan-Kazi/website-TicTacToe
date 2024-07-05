@@ -1,4 +1,4 @@
-/*var turns = 0;
+var turns = 0;
 var winner = 0; // 0 = No One, 1 = X, 2 = O
 var isGameOver = false;
 
@@ -16,6 +16,12 @@ var draws = 0;
 
 const ticTacToeTable = document.getElementById("TicTacToeTable");
 
+const loginForm = document.getElementById("Login");
+var user_name;
+
+const messageForm = document.getElementById("SendMessage");
+var msg;
+
 const channelForm = document.getElementById("ChannelForm");
 
 var pubnub;
@@ -23,6 +29,7 @@ var channelId;
 
 var xUser;
 var isUserTurn;
+
 
 function generateRandomString(length) {
     const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
@@ -32,45 +39,8 @@ function generateRandomString(length) {
     }
     return result;
 }
-*/
 
-const loginForm = document.getElementById("Login");
-var user_name;
 
-const messageForm = document.getElementById("SendMessage");
-var msg;
-
-const socket = io("https://chess-amaankazi.onrender.com")
-
-socket.on('chat-message', data => {
-    console.log(`${data.name}: ${data.message}`)
-})
-
-socket.on('user-connected', name => {
-    console.log(`${name} connected`)
-})
-  
-socket.on('user-disconnected', name => {
-    console.log(`${name} disconnected`)
-})
-
-messageForm.addEventListener("submit", function (event) {
-    event.preventDefault();
-    msg = messageForm.message.value;
-    
-    socket.emit("send-chat-message", msg)
-    messageForm.reset();
-});
-
-loginForm.addEventListener("submit", function (event) {
-    event.preventDefault(); // Prevent default reloading on form submit
-    user_name = loginForm.username.value;
-    
-    socket.emit("new-user", user_name)
-    console.log("You joined")
-});
-
-/*
 const subscribePubNub = () => {
     // subscribe to a channel
     // create a local channel entity
@@ -109,7 +79,6 @@ const subscribePubNub = () => {
     console.log("Channel: " + channelId);
 }
 
-/*
 // PUBNUB
 const setupPubNub = () => {
     // Update this block with your publish/subscribe keys
@@ -169,7 +138,23 @@ function createChannel()
 }
 
 // FORMS
+loginForm.addEventListener("submit", function (event) {
+    event.preventDefault(); // Prevent default reloading on form submit
+    user_name = loginForm.username.value;
 
+    if ((user_name.length != 0) && (user_name.charAt(0) != " "))
+    {
+        loginForm.style.display = "none";
+        console.log("User Name: " + user_name);
+        
+        setupPubNub();
+        channelForm.style.display = "block";
+    }
+    else
+    {
+        console.log("The username is invalid");
+    }
+});
 
 async function validateChannel(id)
 {
@@ -224,7 +209,13 @@ channelForm.addEventListener("submit", function (event) {
     }
 });
 
-
+messageForm.addEventListener("submit", function (event) {
+    event.preventDefault();
+    msg = messageForm.message.value;
+    
+    publishData("chat", msg, null, null);
+    messageForm.reset();
+});
 
 
 // Initialize grid
